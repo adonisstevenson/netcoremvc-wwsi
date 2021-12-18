@@ -1,0 +1,41 @@
+﻿@model IEnumerable<filmdb.Models.FilmModel>
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<h2> strona główna - FilmController </h2>
+
+<p>
+    <a asp-action="Create"></a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.Year)
+            </th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var item in Model){
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.ID)</td>
+                <td>@Html.DisplayFor(modelItem => item.Title)</td>
+                <td>@Html.DisplayFor(modelItem => item.Year)</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.ID" class=" btn btn-primary">Edit</a>
+                    <a asp-action="Remove" asp-route-id="@item.ID" class=" btn btn-primary">Remove</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
